@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8 Creat - Personal OrgPlayer</title>
+<style>
+  :root {
+    --primary-blue: #00d2ff;
+    --neon-purple: #9d50bb;
+    --glass: rgba(255, 255, 255, 0.1);
+  }
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* --- ANIMATED METEOR SHOWER --- */
+  .star-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: rotate(-25deg);
+  }
+
+  .meteor {
+    position: absolute;
+    background: linear-gradient(90deg, white, transparent);
+    height: 2px;
+    border-radius: 999px;
+    filter: drop-shadow(0 0 10px white);
+    animation: meteor-fall linear infinite;
+    opacity: 0;
+  }
+
+  @keyframes meteor-fall {
+    0% { transform: translateX(0); opacity: 0; width: 0; }
+    10% { opacity: 1; width: 100px; }
+    100% { transform: translateX(1000px); opacity: 0; width: 0; }
+  }
+
+  /* Different Meteor Timings */
+  .meteor:nth-child(1) { top: 10%; left: -10%; animation-duration: 4s; animation-delay: 0s; }
+  .meteor:nth-child(2) { top: 30%; left: -5%; animation-duration: 6s; animation-delay: 2s; }
+  .meteor:nth-child(3) { top: 60%; left: -15%; animation-duration: 5s; animation-delay: 4s; }
+  .meteor:nth-child(4) { top: 80%; left: -10%; animation-duration: 7s; animation-delay: 1s; }
+  .meteor:nth-child(5) { top: 20%; left: -20%; animation-duration: 4s; animation-delay: 3s; }
+
+  /* --- CENTERED CONTENT CARD --- */
+  .card {
+    position: relative;
+    z-index: 10;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 50px 80px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    animation: fadeIn 1.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .title {
+    color: white;
+    font-size: 14px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    opacity: 0.8;
+  }
+
+  .subtitle {
+    color: var(--primary-blue);
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  /* --- THE DOWNLOAD BUTTON --- */
+  .download-btn {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(45deg, var(--primary-blue), var(--neon-purple));
+    color: white;
+    text-decoration: none;
+    padding: 18px 45px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .download-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(157, 80, 187, 0.6);
+  }
+
+  .download-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Glowing pulse effect around button */
+  .pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    background: var(--primary-blue);
+    z-index: -1;
+    animation: pulse-ring 2s infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="star-container">
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor)</div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+  </div>
+
+  <div class="card">
+    <div class="title">DOWNLOAD NOW</div>
+    <div class="subtitle">Personal OrgPlayer Chat</div>
+    
+    <div style="position: relative;">
+      <div class="pulse"></div>
+      <a href="8creat.apk" class="download-btn" download>
+        Instant Download
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // To trigger download automatically when page loads, uncomment below:
+    /*
+    window.onload = () => {
+      const link = document.createElement('a');
+      link.href = '8creat.apk';
+      link.download = '8-Creat-App';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+    */
+  </script>
+
+</body>
+</html>
